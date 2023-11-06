@@ -9,6 +9,7 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.tsx&nbsp;</code>
           <span>hello this is my profile</span>
+          <span>this is the change from windows</span>
         </p>
         <div>
           <a
