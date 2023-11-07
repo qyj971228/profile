@@ -23,7 +23,23 @@ a {
   }
 }
 
-@keyframes scale1 {
+.wave {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 1000px;
+  background-color: #9d9d9d;
+  animation-name: click;
+  animation-timing-function: ease-out;
+  animation-iteration-count: initial;
+  animation-duration: 0.4s;
+}
+
+@keyframes onPress {
   0% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(0);
@@ -34,7 +50,7 @@ a {
   }
 }
 
-@keyframes scale2 {
+@keyframes click {
   0% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(0);
