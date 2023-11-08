@@ -2,7 +2,7 @@ import Button from '~/components/Button'
 export default function Home() {
   return (
     <main>
-      <div style={{display: 'flex', gap: '10px'}}>
+      <div style={{display: 'flex', gap: '10px', flexDirection: 'column'}}>
         <Button>Default</Button>
         <Button color="success">Success</Button>
         <Button color="info">Info</Button>
