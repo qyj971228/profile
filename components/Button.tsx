@@ -44,7 +44,9 @@ export default function Button({
   const [endTime, setEndTime] = useState<number>(0)
   const buttonLongPressTimer = useRef<NodeJS.Timeout | null>(null)
   // 按下
-  function onHandleButtonMouseDown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function onHandleButtonMouseDown(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.TouchEvent<HTMLButtonElement>
+  ) {
     setStartTime(Date.now())
     setIsMouseKeyDown(true)
     // 设置波纹位置
@@ -61,7 +63,9 @@ export default function Button({
     }, 400)
   }
   // 弹起
-  function onHandleButtonMouseUp(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function onHandleButtonMouseUp(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.TouchEvent<HTMLButtonElement>
+  ) {
     setEndTime(Date.now())
     setShowDeepBg(false)
     setIsMouseKeyDown(false)
@@ -69,7 +73,9 @@ export default function Button({
     waveAnimationFinishedTImer.current && clearTimeout(waveAnimationFinishedTImer.current)
   }
   // 点击事件
-  function onHandleButtonClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function onHandleButtonClick(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.TouchEvent<HTMLButtonElement>
+  ) {
     if (endTime - startTime > 200) return
     setWaves([...waves, { animationName: 'click' }])
     // 设置波纹位置
@@ -87,6 +93,7 @@ export default function Button({
   }
   function onHandleButtonMouseLeave(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     setIsMouseEnter(false)
+    setShowDeepBg(false)
   }
 
   const colors: Record<color, Record<status, string>> = {
