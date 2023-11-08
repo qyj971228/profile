@@ -6,15 +6,18 @@ import useMousePosition from '~/hooks/useMousePosition'
 
 type variant = 'contained' | 'outlined' | 'text'
 type color = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+type size = 'large' | 'medium*' | 'small'
 type status = 'enabled' | 'hovered'
 
 export default function Button({
   variant,
   color,
+  size,
   children
 }: {
   variant?: variant
   color?: color
+  size?: size
   children?: ReactNode
 }) {
   const button = useRef<HTMLButtonElement | null>(null)
@@ -136,20 +139,54 @@ export default function Button({
 
   // 按钮样式
   function buttonStyles(): CSSProperties {
+    return {
+      ...btnBg(),
+      ...btnFont(),
+      ...btnSize()
+    }
+  }
+
+  // 按钮大小
+  function btnSize(): CSSProperties {
+    if (size == 'large')
+      return {
+        padding: '8px 22px'
+      }
+    if (size == 'small')
+      return {
+        padding: '4px 10px'
+      }
+    return {
+      padding: '6px 16px'
+    }
+  }
+
+  // 按钮背景
+  function btnBg(): CSSProperties {
     if (color) {
       if (!showDeepBg)
         return {
-          color: '#fff',
           backgroundColor: isMouseEnter ? colors[color].hovered : colors[color].enabled
         }
       return {
-        color: '#fff',
         backgroundColor: isMouseEnter ? colors[color].enabled : colors[color].hovered
       }
     }
     if (!showDeepBg) return {}
     return {
       backgroundColor: '#9d9d9d'
+    }
+  }
+
+  // 按钮字体
+  function btnFont(): CSSProperties {
+    if (color) {
+      return {
+        color: '#fff'
+      }
+    }
+    return {
+      color: '#000'
     }
   }
 
