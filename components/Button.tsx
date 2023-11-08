@@ -150,14 +150,17 @@ export default function Button({
   function btnSize(): CSSProperties {
     if (size == 'large')
       return {
-        padding: '8px 22px'
+        padding: '8px 22px',
+        fontSize: '15px'
       }
     if (size == 'small')
       return {
-        padding: '4px 10px'
+        padding: '4px 10px',
+        fontSize: '13px'
       }
     return {
-      padding: '6px 16px'
+      padding: '6px 16px',
+      fontSize: '14px'
     }
   }
 
