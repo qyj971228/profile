@@ -1,21 +1,18 @@
 'use client'
 import { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react'
-import style from './Button.module.css'
+import style from './OutlinedButton.module.css'
 import _ from 'lodash'
 import useMousePosition from '~/hooks/useMousePosition'
 
-type variant = 'contained' | 'outlined' | 'text'
 type color = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
-type size = 'large' | 'medium*' | 'small'
+type size = 'large' | 'medium' | 'small'
 type status = 'enabled' | 'hovered'
 
-export default function Button({
-  variant,
+export default function OutlinedButton({
   color,
   size,
   children
 }: {
-  variant?: variant
   color?: color
   size?: size
   children?: ReactNode
@@ -29,7 +26,7 @@ export default function Button({
     waveTimer.current && clearTimeout(waveTimer.current)
     waveTimer.current = setTimeout(() => {
       setWaves([])
-    }, 1000)
+    }, 600)
   }, [waves])
 
   // 按钮深色背景
@@ -63,7 +60,7 @@ export default function Button({
     // 波纹动画完毕后修改按钮颜色为波纹颜色
     waveAnimationFinishedTImer.current = setTimeout(() => {
       setShowDeepBg(true)
-    }, 400)
+    }, 600)
   }
   // 弹起
   function onHandleButtonMouseUp(
@@ -133,46 +130,49 @@ export default function Button({
       width: (button.current?.clientWidth ?? 0) * 2.2,
       left: waveX + 'px',
       top: waveY + 'px',
-      backgroundColor: color ? colors[color].enabled : '#9d9d9d'
+      backgroundColor: color ? colors[color].enabled + '80' : '#9d9d9d',
+      animationPlayState: showDeepBg ? 'paused' : 'running'
     }
+  }
+
+  // 按钮类名
+  function buttonClassNames(): string[] {
+    const btnSizeClassName = (size && style[size]) ?? ''
+    return [style.button, btnSizeClassName]
   }
 
   // 按钮样式
   function buttonStyles(): CSSProperties {
     return {
       ...btnBg(),
-      ...btnFont(),
-      ...btnSize()
+      ...btnFontColor(),
+      ...btnBorder()
     }
   }
 
-  // 按钮大小
-  function btnSize(): CSSProperties {
-    if (size == 'large')
+  // 按钮边框
+  function btnBorder(): CSSProperties {
+    if (color)
       return {
-        padding: '8px 22px',
-        fontSize: '15px'
-      }
-    if (size == 'small')
-      return {
-        padding: '4px 10px',
-        fontSize: '13px'
+        borderColor: colors[color].enabled + '80'
       }
     return {
-      padding: '6px 16px',
-      fontSize: '14px'
+      borderColor: '#000'
     }
   }
 
   // 按钮背景
   function btnBg(): CSSProperties {
+    if (!isMouseEnter) return {
+      backgroundColor: '#fff'
+    }
     if (color) {
-      if (!showDeepBg)
-        return {
-          backgroundColor: isMouseEnter ? colors[color].hovered : colors[color].enabled
-        }
       return {
-        backgroundColor: isMouseEnter ? colors[color].enabled : colors[color].hovered
+        backgroundColor: isMouseEnter
+          ? colors[color].enabled + '0A'
+          : isMouseKeyDown
+          ? colors[color].enabled + '80'
+          : '#fff'
       }
     }
     if (!showDeepBg) return {}
@@ -182,10 +182,10 @@ export default function Button({
   }
 
   // 按钮字体
-  function btnFont(): CSSProperties {
+  function btnFontColor(): CSSProperties {
     if (color) {
       return {
-        color: '#fff'
+        color: colors[color].enabled
       }
     }
     return {
@@ -196,7 +196,7 @@ export default function Button({
   return (
     <button
       ref={button}
-      className={style.button}
+      className={buttonClassNames().join(' ')}
       style={buttonStyles()}
       onClick={(e) => onHandleButtonClick(e)}
       onMouseDown={(e) => onHandleButtonMouseDown(e)}
