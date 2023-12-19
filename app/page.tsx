@@ -38,6 +38,10 @@ export default function Home() {
     )
   }
 
+  const toEchartMap = () => {
+    window.open('https://nuxt-echart-map.vercel.app/', '_blank')
+  }
+
   const cursor = {
     cursor: 'pointer'
   }
@@ -51,41 +55,47 @@ export default function Home() {
           style={{ ...cursor }}
           onClick={toUchongdingwei}
         >
-          公司项目: www.uchongdingwei.com [可能开代理无法访问]
+          公司项目: www.uchongdingwei.com [不可代理访问][可能服务到期]
         </li>
         <li style={{ ...cursor }}>
-          <span onClick={toStarBucksWeb}>仿星巴克网站</span>|
-          <span onClick={toStarBucksCode}>仓库</span>
+          <span onClick={toStarBucksWeb}>仿星巴克[网站]</span>|
+          <span onClick={toStarBucksCode}>仿星巴克[仓库]</span>
         </li>
         <li
           style={{ ...cursor }}
           onClick={toLocalProject}
         >
-          当前profile项目[profile.qiuyingjian.site.com]
+          当前profile项目[profile.qiuyingjian.site.com][仓库]
         </li>
         <li
           style={{ ...cursor }}
           onClick={toReactLib}
         >
-          react组件
+          react组件[仓库]
         </li>
         <li
           style={{ ...cursor }}
           onClick={toVueLib}
         >
-          vue组件
+          vue组件[仓库]
+        </li>
+        <li
+          style={{ ...cursor }}
+          onClick={toEchartMap}
+        >
+          echart地图大屏[studying][网站][需要代理访问]
         </li>
         <li
           style={{ ...cursor }}
           onClick={toSwiftUI}
         >
-          swiftui[studying]
+          swiftui[studying][仓库]
         </li>
         <li
           style={{ ...cursor }}
           onClick={toGithub}
         >
-          github profile
+          github
         </li>
       </ul>
     </main>
