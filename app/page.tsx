@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 
 export default function Home() {
   const toLocalProject = () => {
@@ -54,6 +55,7 @@ export default function Home() {
       <h3>This is qiuyingjian.</h3>
       <h3>Welcome to my profile.</h3>
       <ul style={{ margin: '10px' }}>
+        <Link href='/button'>本地的一些按钮</Link>
         <li
           style={{ ...cursor }}
           onClick={toUchongdingwei}
@@ -61,7 +63,9 @@ export default function Home() {
           公司项目: www.uchongdingwei.com [不可代理访问][可能服务到期]
         </li>
         <li style={{ ...cursor }}>
-          <span onClick={toStarBucksWeb}>仿星巴克[网站]</span>|
+          <span onClick={toStarBucksWeb}>仿星巴克[网站]</span>
+        </li>
+        <li style={{ ...cursor }}>
           <span onClick={toStarBucksCode}>仿星巴克[仓库]</span>
         </li>
         <li
