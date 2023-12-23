@@ -38,6 +38,10 @@ export default function Home() {
     )
   }
 
+  const toEditor = () => {
+    window.open('https://image-text-editor.vercel.app/', '_blank')
+  }
+
   const cursor = {
     cursor: 'pointer'
   }
@@ -62,6 +66,11 @@ export default function Home() {
           onClick={toLocalProject}
         >
           当前profile项目[profile.qiuyingjian.site.com]
+        </li>
+        <li
+          style={{ ...cursor }}
+          onClick={toEditor}>
+          图片文字编辑器
         </li>
         <li
           style={{ ...cursor }}
