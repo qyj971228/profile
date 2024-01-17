@@ -46,6 +46,10 @@ export default function Home() {
     window.open('https://nuxt-echart-map.vercel.app/', '_blank')
   }
 
+  const toLeetCode = () => {
+    window.open('https://leetcode.cn/u/qyj971228/', '_blank')
+  }
+
   const cursor = {
     cursor: 'pointer'
   }
@@ -108,6 +112,12 @@ export default function Home() {
           onClick={toGithub}
         >
           github
+        </li>
+        <li
+          style={{ ...cursor }}
+          onClick={toLeetCode}
+        >
+          leetcode
         </li>
       </ul>
     </main>
