@@ -57,6 +57,10 @@ export default function Home() {
     window.open('https://qyj-lib-vue-preview.vercel.app', '_blank')
   }
 
+  const toVueLibNPM = () => {
+    window.open('https://www.npmjs.com/package/qyj-lib-vue', '_blank')
+  }
+
   const cursor = {
     cursor: 'pointer'
   }
@@ -90,12 +94,12 @@ export default function Home() {
         >
           react图片文字编辑[网页]
         </li>
-        {/* <li
+        <li
           style={{ ...cursor }}
           onClick={toReactLib}
         >
           react组件[仓库]
-        </li> */}
+        </li>
         <li
           style={{ ...cursor }}
           onClick={toVueLib}
@@ -108,23 +112,29 @@ export default function Home() {
         >
           vue组件预览[网页][下拉框与树形组件]
         </li>
+        <li
+          style={{ ...cursor }}
+          onClick={toVueLibNPM}
+        >
+          vue组件[NPM仓库]
+        </li>
         {/* <li
           style={{ ...cursor }}
           onClick={toEchartMap}
         >
           echart地图大屏[studying][网站][需要代理访问]
         </li> */}
-        {/* <li
+        <li
           style={{ ...cursor }}
           onClick={toSwiftUI}
         >
           swiftui[studying][仓库]
-        </li> */}
+        </li>
         <li
           style={{ ...cursor }}
           onClick={toShop}
         >
-          商城[施工中]
+          商城[nextjs][施工中]
         </li>
         <li
           style={{ ...cursor }}
