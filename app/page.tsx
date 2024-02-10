@@ -53,6 +53,10 @@ export default function Home() {
     window.open('https://github.com/qyj971228/shopping', '_blank')
   }
 
+  const toVueLibPreview = () => {
+    window.open('https://qyj-lib-vue-preview.vercel.app', '_blank')
+  }
+
   const cursor = {
     cursor: 'pointer'
   }
@@ -60,7 +64,6 @@ export default function Home() {
   return (
     <main>
       <h3>This is qiuyingjian.</h3>
-      <h3>Welcome to my profile.</h3>
       <ul style={{ margin: '10px' }}>
         <Link href="/button">仿material的一些按钮</Link>
         <li
@@ -85,7 +88,7 @@ export default function Home() {
           style={{ ...cursor }}
           onClick={toEditor}
         >
-          react图片文字编辑
+          react图片文字编辑[网页]
         </li>
         {/* <li
           style={{ ...cursor }}
@@ -98,6 +101,12 @@ export default function Home() {
           onClick={toVueLib}
         >
           vue组件[仓库][下拉框与树形组件]
+        </li>
+        <li
+          style={{ ...cursor }}
+          onClick={toVueLibPreview}
+        >
+          vue组件预览[网页][下拉框与树形组件]
         </li>
         {/* <li
           style={{ ...cursor }}
